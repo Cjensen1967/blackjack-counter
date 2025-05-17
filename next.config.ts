@@ -1,14 +1,12 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
+
+const isGithubPages = process.env.GITHUB_PAGES_DEPLOY === 'true';
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  output: 'export', // Enable static HTML export
+  basePath: isGithubPages ? '/blackjack-counter' : '', // Set basePath for GitHub Pages
   images: {
+    unoptimized: true, // Required for static export with Next.js Image component
     remotePatterns: [
       {
         protocol: 'https',
@@ -17,6 +15,12 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 
