@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { CheckCircle2, XCircle, RefreshCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function CountSightTrainer() {
   const [currentHand, setCurrentHand] = useState<PlayingCardType[]>([]);
@@ -20,6 +21,11 @@ export default function CountSightTrainer() {
   const [handId, setHandId] = useState<number>(0); // Unique key for animation, initialized to 0
   const [showCards, setShowCards] = useState<boolean>(true);
   const timerIdRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Progressive timing state
+  const [timeLimit, setTimeLimit] = useState<number>(10000); // Start with 10 seconds (10000ms)
+  const [minTimeLimit] = useState<number>(2000); // Minimum 2 seconds
+  const [timeDecrement] = useState<number>(200); // Decrease by 200ms each time
 
   const startNewDrill = useCallback(() => {
     if (timerIdRef.current) {
@@ -38,14 +44,20 @@ export default function CountSightTrainer() {
     setIsSubmitted(false);
     setShowCards(true); // Ensure cards are shown for the new drill
     setHandId(Date.now()); // Trigger animation and useEffect for timer
-  }, []);
+
+    // If the previous answer was correct, decrease the time limit
+    // This check is done *before* feedback is reset for the new drill
+    if (feedback?.type === 'correct' && timeLimit > minTimeLimit) {
+      setTimeLimit(prevTime => Math.max(prevTime - timeDecrement, minTimeLimit));
+    }
+  }, [feedback, timeLimit, minTimeLimit, timeDecrement]);
 
   useEffect(() => {
     // Timer effect: Starts when a new hand is dealt and cards are meant to be shown
     if (showCards && currentHand.length > 0 && handId !== 0) { // handId !== 0 ensures it runs after initial setup
       timerIdRef.current = setTimeout(() => {
         setShowCards(false);
-      }, 10000); // 10 seconds
+      }, timeLimit); // Use dynamic timeLimit
     }
 
     // Cleanup timer if component unmounts or dependencies change
@@ -55,7 +67,7 @@ export default function CountSightTrainer() {
         timerIdRef.current = null;
       }
     };
-  }, [handId, showCards, currentHand.length]);
+  }, [handId, showCards, currentHand.length, timeLimit]);
 
   // Effect to start the first drill on component mount
   useEffect(() => {
@@ -81,9 +93,15 @@ export default function CountSightTrainer() {
 
   return (
     <div className="container mx-auto max-w-3xl p-4 sm:p-8 flex flex-col items-center space-y-6">
-      <header className="text-center">
-        <h1 className="text-4xl font-bold text-primary">CountSight Trainer</h1>
-        <p className="text-muted-foreground mt-1 text-lg">Sharpen your Hi-Lo card counting skills!</p>
+      <header className="text-center w-full flex justify-between items-start pt-4 px-4 sm:px-0">
+        <div className="flex-1"></div> {/* Spacer */}
+        <div className="flex-grow text-center">
+          <h1 className="text-4xl font-bold text-primary">CountSight Trainer</h1>
+          <p className="text-muted-foreground mt-1 text-lg">Sharpen your Hi-Lo card counting skills!</p>
+        </div>
+        <div className="flex-1 flex justify-end">
+          <ThemeToggle />
+        </div>
       </header>
 
       <Card className="w-full shadow-xl bg-casino-green-felt text-casino-green-felt-foreground">
@@ -144,6 +162,14 @@ export default function CountSightTrainer() {
 
       <Button onClick={startNewDrill} variant="outline" className="w-full sm:w-auto text-base py-3 px-6 h-12">
         <RefreshCw className="mr-2 h-5 w-5" /> New Drill
+      </Button>
+      <Button 
+        onClick={() => setTimeLimit(10000)} 
+        variant="ghost" 
+        className="text-sm text-muted-foreground hover:text-foreground"
+        title="Reset timer to 10 seconds"
+      >
+        Reset Timer
       </Button>
     </div>
   );
