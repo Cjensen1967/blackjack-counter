@@ -112,7 +112,7 @@ export default function CountSightTrainer() {
                 value={userCount}
                 onChange={(e) => setUserCount(e.target.value)}
                 placeholder="Enter Hi-Lo count"
-                className="text-center text-lg h-12 flex-grow"
+                className="text-center text-lg h-12 flex-grow text-black dark:text-black"
                 aria-label="Hi-Lo count input"
                 required
                 autoFocus
@@ -127,14 +127,14 @@ export default function CountSightTrainer() {
             <div
               className={cn(
                 "flex items-center space-x-2 text-lg p-3 rounded-md w-full max-w-sm justify-center animate-fadeIn min-h-[3rem]",
-                feedback.type === 'correct' ? 'bg-accent/20 text-green-700 dark:text-green-400' : 'bg-destructive/20 text-red-700 dark:text-red-400'
+                feedback.type === 'correct' ? 'bg-accent/20 text-green-700 dark:text-green-400' : 'bg-destructive text-black'
               )}
               role="alert"
             >
               {feedback.type === 'correct' ? (
                 <CheckCircle2 className="h-6 w-6 text-green-600 dark:text-green-500 shrink-0" />
               ) : (
-                <XCircle className="h-6 w-6 text-red-600 dark:text-red-500 shrink-0" />
+                <XCircle className="h-6 w-6 text-destructive-foreground shrink-0" />
               )}
               <span className="text-center">{feedback.message}</span>
             </div>
