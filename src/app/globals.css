@@ -51,6 +51,9 @@ body {
     --sidebar-accent-foreground: 210 29% 29%;
     --sidebar-border: 210 10% 80%;
     --sidebar-ring: 210 29% 49%; /* Lighter primary for ring */
+
+    --casino-green-felt: 151 30% 30%; /* Casino Green #35654d */
+    --casino-green-felt-foreground: 0 0% 95%; /* Light Gray for text on casino green */
   }
 
   .dark {
@@ -96,6 +99,9 @@ body {
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 210 29% 60%;
+
+    --casino-green-felt: 151 30% 25%; /* Darker Casino Green for dark mode */
+    --casino-green-felt-foreground: 0 0% 90%; 
   }
 }
 

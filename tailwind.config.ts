@@ -60,7 +60,11 @@ export default {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  			},
+        'casino-green-felt': {
+          DEFAULT: 'hsl(var(--casino-green-felt))',
+          foreground: 'hsl(var(--casino-green-felt-foreground))'
+        }
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

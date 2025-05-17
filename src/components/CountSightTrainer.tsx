@@ -86,10 +86,10 @@ export default function CountSightTrainer() {
         <p className="text-muted-foreground mt-1 text-lg">Sharpen your Hi-Lo card counting skills!</p>
       </header>
 
-      <Card className="w-full shadow-xl bg-card">
+      <Card className="w-full shadow-xl bg-casino-green-felt text-casino-green-felt-foreground">
         <CardContent className="p-4 sm:p-6 flex flex-col items-center space-y-4 min-h-[300px] justify-center">
           {currentHand.length === 0 && handId === 0 && ( // Initial loading state
-            <p className="text-muted-foreground text-lg">Loading drill...</p>
+            <p className="text-lg">Loading drill...</p>
           )}
 
           {showCards && currentHand.length > 0 && (
