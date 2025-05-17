@@ -20,7 +20,8 @@ export function PlayingCard({ card }: PlayingCardProps) {
       data-ai-hint="playing card"
       aria-label={`${displayRank} of ${card.suit === 'H' ? 'Hearts' : card.suit === 'D' ? 'Diamonds' : card.suit === 'C' ? 'Clubs' : 'Spades'}`}
     >
-      <div className="self-start w-full">
+      {/* Top-left corner */}
+      <div className="self-start flex flex-col items-center">
         <div className="text-lg font-bold leading-none" style={{ color: suitColor }}>
           {displayRank}
         </div>
@@ -28,10 +29,14 @@ export function PlayingCard({ card }: PlayingCardProps) {
           {suitSymbol}
         </div>
       </div>
+      
+      {/* Center symbol */}
       <div className="text-3xl" style={{ color: suitColor }} aria-hidden="true">
         {suitSymbol}
       </div>
-      <div className="self-end w-full transform rotate-180">
+      
+      {/* Bottom-right corner (rotated) */}
+      <div className="self-end flex flex-col items-center transform rotate-180">
         <div className="text-lg font-bold leading-none" style={{ color: suitColor }}>
           {displayRank}
         </div>
@@ -42,3 +47,4 @@ export function PlayingCard({ card }: PlayingCardProps) {
     </Card>
   );
 }
+
