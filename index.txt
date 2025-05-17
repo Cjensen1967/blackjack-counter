@@ -1,0 +1,17 @@
+1:"$Sreact.fragment"
+2:I[7280,["668","static/chunks/668-a3819a667e2acf56.js","169","static/chunks/169-54c187a9df1c7607.js","177","static/chunks/app/layout-0a3805b5069f3833.js"],"ThemeProvider"]
+3:I[7555,[],""]
+4:I[1295,[],""]
+5:I[7323,["668","static/chunks/668-a3819a667e2acf56.js","169","static/chunks/169-54c187a9df1c7607.js","177","static/chunks/app/layout-0a3805b5069f3833.js"],"Toaster"]
+6:I[2948,["668","static/chunks/668-a3819a667e2acf56.js","942","static/chunks/942-c6da124773f48034.js","974","static/chunks/app/page-ea15329bb2ec4b2c.js"],"default"]
+7:I[9665,[],"OutletBoundary"]
+a:I[9665,[],"ViewportBoundary"]
+c:I[9665,[],"MetadataBoundary"]
+e:I[6614,[],""]
+:HL["/blackjack-counter/_next/static/media/028c0d39d2e8f589-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/blackjack-counter/_next/static/css/84d0d9a9236e231f.css","style"]
+0:{"P":null,"b":"g4HOqN0j18H7cHnLaMUkm","p":"/blackjack-counter","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/blackjack-counter/_next/static/css/84d0d9a9236e231f.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"__variable_b776a6","suppressHydrationWarning":true,"children":["$","body",null,{"className":"font-sans antialiased","children":["$","$L2",null,{"defaultTheme":"system","children":[["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen flex items-center justify-center","children":["$","div",null,{"className":"text-center","children":[["$","h1",null,{"className":"text-4xl font-bold","children":"404 - Page Not Found"}],["$","p",null,{"className":"mt-4","children":"The page you're looking for doesn't exist."}],["$","a",null,{"href":"/","className":"mt-6 inline-block text-blue-500 hover:underline","children":"Return to Home"}]]}]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L5",null,{}]]}]}]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","main",null,{"className":"min-h-screen py-8 flex items-center justify-center","children":["$","$L6",null,{}]}],"$undefined",null,["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","SX-zjjtWqkzlOOvDSe-ox",{"children":[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+9:null
+d:[["$","title","0",{"children":"CountSight Trainer"}],["$","meta","1",{"name":"description","content":"Hi-Lo card count training application designed to improve visual recognition speed."}],["$","link","2",{"rel":"icon","href":"/blackjack-counter/favicon.ico","type":"image/x-icon","sizes":"16x16"}]]
