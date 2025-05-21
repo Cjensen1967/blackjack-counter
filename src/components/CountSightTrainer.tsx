@@ -2,6 +2,8 @@
 "use client";
 
 import { useState, useEffect, useCallback, FormEvent, useRef } from 'react';
+import ReactConfetti from 'react-confetti';
+import { useWindowSize } from 'react-use';
 import type { PlayingCardType } from '@/types';
 import { createDeck, shuffleDeck, getHiLoCount } from '@/lib/deck';
 import { PlayingCard } from '@/components/PlayingCard';
@@ -21,6 +23,9 @@ export default function CountSightTrainer() {
   const [handId, setHandId] = useState<number>(0); // Unique key for animation, initialized to 0
   const [showCards, setShowCards] = useState<boolean>(true);
   const timerIdRef = useRef<NodeJS.Timeout | null>(null);
+  const [runConfetti, setRunConfetti] = useState<boolean>(false);
+  const confettiTimerIdRef = useRef<NodeJS.Timeout | null>(null);
+
 
   // Progressive timing state
   const [timeLimit, setTimeLimit] = useState<number>(10000); // Start with 10 seconds (10000ms)
@@ -86,13 +91,40 @@ export default function CountSightTrainer() {
     setIsSubmitted(true);
     if (count === correctCount) {
       setFeedback({ type: 'correct', message: 'Correct!' });
+      setRunConfetti(true);
+      if (confettiTimerIdRef.current) {
+        clearTimeout(confettiTimerIdRef.current);
+      }
+      confettiTimerIdRef.current = setTimeout(() => {
+        setRunConfetti(false);
+      }, 4000); // Run confetti for 4 seconds
     } else {
       setFeedback({ type: 'incorrect', message: `Incorrect. The correct count is ${correctCount}.` });
     }
   };
 
+  const { width, height } = useWindowSize();
+
+  // Cleanup confetti timer on unmount
+  useEffect(() => {
+    return () => {
+      if (confettiTimerIdRef.current) {
+        clearTimeout(confettiTimerIdRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="container mx-auto max-w-3xl p-4 sm:p-8 flex flex-col items-center space-y-6">
+      {runConfetti && (
+        <ReactConfetti
+          width={width}
+          height={height}
+          numberOfPieces={200}
+          recycle={false}
+          aria-hidden="true" // Hide from screen readers
+        />
+      )}
       <header className="text-center w-full flex justify-between items-start pt-4 px-4 sm:px-0">
         <div className="flex-1"></div> {/* Spacer */}
         <div className="flex-grow text-center">
